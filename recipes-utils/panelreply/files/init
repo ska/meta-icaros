@@ -1,0 +1,37 @@
+#! /bin/sh
+set -e
+
+PIDFILE=/var/run/PanelReply.pid
+
+test -x /usr/bin/PanelReply || exit 0
+PRD_OPTS=""
+
+export PATH="${PATH:+$PATH:}/usr/sbin:/sbin"
+
+case "$1" in
+  start)
+	echo "Starting PanelReply"
+	start-stop-daemon -S --background -p $PIDFILE -x /usr/bin/PanelReply -- $PRD_OPTS
+	echo "done."
+	;;
+	
+  stop)
+	echo -n "Stopping PanelReply"
+	start-stop-daemon -K -p $PIDFILE -x /usr/bin/PanelReply
+	echo "."
+	;;
+
+  restart)
+	echo -n "Restarting PanelReply"
+	start-stop-daemon -K -p $PIDFILE --oknodo -x /usr/bin/PanelReply
+	sleep 2
+	start-stop-daemon -S --background -p $PIDFILE -x /usr/bin/PanelReply -- $PRD_OPTS
+	echo "."
+	;;
+
+  *)
+	echo "Usage: /etc/init.d/panelreply.sh {start|stop|restart}"
+	exit 1
+esac
+
+exit 0

@@ -1,0 +1,12 @@
+# <file system>	<mount pt>	<type>	<options>	<dump>	<pass>
+
+/dev/root            /                    auto       defaults              1  1
+proc                 /proc                proc       defaults              0  0
+devpts               /dev/pts             devpts     mode=0620,gid=5       0  0
+tmpfs                /run                 tmpfs      mode=0755,nodev,nosuid,strictatime 0  0
+#/dev/md127           /mnt/RaidFileShare       ext3       rw,noatime,nobarrier,errors=remount-ro 0 2
+
+#Mounted  manually in rcS for use splash
+#tmpfs                /var/volatile        tmpfs      defaults              0  0
+
+

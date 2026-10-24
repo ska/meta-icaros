@@ -1,0 +1,4 @@
+IcarOS NAS for Seagate GoFlex Net (kirkwood-goflexnet).
+
+Build the image with:
+    bitbake nas-image-minimal

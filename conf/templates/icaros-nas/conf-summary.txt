@@ -1,0 +1,1 @@
+IcarOS NAS build configuration (icaros-nas distro, kirkwood-goflexnet machine).
